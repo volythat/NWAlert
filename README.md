@@ -17,7 +17,7 @@ A alert write by swift
 
 # Installation 
 
-**SPM
+** SPM
 
 ```
 dependencies: [
@@ -32,6 +32,7 @@ dependencies: [
                                   message: "This action can't be undo!",
                                   buttons: [NWAlertButton("Cancel",style: .destructive),
                                             NWAlertButton("Discard",style: .destructive,highlight: true)])
+    alert.options = NWAlertOptions()
     alert.alertButtonAction = { action in
         print("action = \(action.title)")
     }

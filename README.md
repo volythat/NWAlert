@@ -3,9 +3,10 @@
 A alert write by swift  
 
 # Images
-
-<img src="images/1.png"/>
-<img src="images/2.png"/>
+<div align = "center">
+<img src="images/1.png" width="350" />
+<img src="images/2.png" width="350" />
+</div>
 
 # Requirements
 

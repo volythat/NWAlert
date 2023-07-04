@@ -128,7 +128,7 @@ public class NWAlertController: UIViewController {
     }
     func addContentView(){
         self.view.addSubview(self.viewContent)
-        self.viewContent.backgroundColor = .white
+        self.viewContent.backgroundColor = options.backgroundContentColor
         self.viewContent.snp.makeConstraints { make in
             make.width.equalTo(options.widthOfAlert)
             make.centerX.equalToSuperview()

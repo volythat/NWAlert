@@ -16,6 +16,7 @@ public struct NWAlertOptions {
     public var colorButtonDefault : UIColor = UIColor(red: 87/255, green: 93/255, blue: 255/255, alpha: 1)
     public var colorButtonDestructive : UIColor = UIColor(red: 245/255, green: 87/255, blue: 87/255, alpha: 1.0)
     public var colorButtonTitleActive : UIColor = .white
+    public var backgroundContentColor : UIColor = .white
     
     public var spacing : CGFloat = 16
     public var heightOfButton : CGFloat = 50

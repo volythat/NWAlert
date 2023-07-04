@@ -1,12 +1,14 @@
 # NWAlert
 
-A Sample Popup 
+A alert write by swift  
 
-# Requiment
 
-- Swift : 5 
-- Xcode 14
-- iOS 13 trở lên 
+# Requirements
+
+- Swift : 5+ 
+- Xcode 14+
+- iOS 13+
+
 
 # Installation 
 

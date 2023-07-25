@@ -49,7 +49,6 @@ public class NWAlertController: UIViewController {
     var message : String? = nil
     var buttons : [NWAlertButton] = []
     
-    public var isTapBackgroundToDismiss : Bool = true
     public var options = NWAlertOptions()
     public var alertButtonAction : ((_ action:NWAlertButton)->Void)?
     
@@ -140,6 +139,7 @@ public class NWAlertController: UIViewController {
     func addLabels(){
         self.lbTitle.text = self.titleAlert
         self.lbTitle.font = options.fontTitle
+        self.lbTitle.textColor = options.colorTitle
         self.lbTitle.sizeToFit()
         self.viewContent.addSubview(self.lbTitle)
         self.lbTitle.snp.makeConstraints { make in
@@ -149,6 +149,7 @@ public class NWAlertController: UIViewController {
         
         self.lbMessage.text = self.message
         self.lbMessage.font = options.fontMessage
+        self.lbMessage.textColor = options.colorMessage
         self.lbMessage.sizeToFit()
         self.viewContent.addSubview(self.lbMessage)
         self.lbMessage.snp.makeConstraints { make in
@@ -236,7 +237,7 @@ public class NWAlertController: UIViewController {
     }
     
     @objc func tapToBackground(_ sender:UIButton){
-        if self.isTapBackgroundToDismiss {
+        if self.options.isAllowTapBackground {
             self.dismiss(animated: true)
         }
     }

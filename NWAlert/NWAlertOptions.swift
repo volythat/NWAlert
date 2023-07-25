@@ -10,7 +10,9 @@ import UIKit
 
 public class NWAlertOptions {
     public var fontTitle : UIFont = UIFont.boldSystemFont(ofSize: 18)
+    public var colorTitle : UIColor = .black
     public var fontMessage : UIFont = UIFont.systemFont(ofSize: 12)
+    public var colorMessage : UIColor = .black
     public var fontButton : UIFont = UIFont.boldSystemFont(ofSize: 15)
     
     public var colorButtonDefault : UIColor = UIColor(red: 87/255, green: 93/255, blue: 255/255, alpha: 1)
@@ -23,9 +25,12 @@ public class NWAlertOptions {
     public var widthOfAlert : CGFloat = 300
     public var cornerViewContent : CGFloat = 12
     public var cornerButton : CGFloat = 8
+    public var isAllowTapBackground : Bool = true 
     
     public init(fontTitle: UIFont = UIFont.boldSystemFont(ofSize: 18),
+                colorTitle: UIColor = .black,
                 fontMessage: UIFont = UIFont.systemFont(ofSize: 12),
+                colorMessage: UIColor = .black,
                 fontButton: UIFont = UIFont.boldSystemFont(ofSize: 15),
                 colorButtonDefault: UIColor = UIColor(red: 87/255, green: 93/255, blue: 255/255, alpha: 1),
                 colorButtonDestructive: UIColor = UIColor(red: 245/255, green: 87/255, blue: 87/255, alpha: 1.0),
@@ -37,7 +42,9 @@ public class NWAlertOptions {
                 cornerViewContent: CGFloat = 12,
                 cornerButton: CGFloat = 8){
         self.fontTitle = fontTitle
+        self.colorTitle = colorTitle
         self.fontMessage = fontMessage
+        self.colorMessage = colorMessage
         self.fontButton = fontButton
         self.colorButtonDefault = colorButtonDefault
         self.colorButtonDestructive = colorButtonDestructive

@@ -150,6 +150,7 @@ public class NWAlertController: UIViewController {
         self.lbMessage.text = self.message
         self.lbMessage.font = options.fontMessage
         self.lbMessage.textColor = options.colorMessage
+        self.lbMessage.numberOfLines = 0
         self.lbMessage.sizeToFit()
         self.viewContent.addSubview(self.lbMessage)
         self.lbMessage.snp.makeConstraints { make in
@@ -162,7 +163,7 @@ public class NWAlertController: UIViewController {
     }
     func addStackView(){
         self.viewContent.addSubview(self.stackButtons)
-        if self.buttons.count > 2 {
+        if self.buttons.count > 2 || self.options.buttonsVertical {
             self.stackButtons.axis = .vertical
             let heightOfSpacing = (CGFloat(buttons.count - 1) * options.spacing)
             let height = (CGFloat(buttons.count) * options.heightOfButton) + heightOfSpacing

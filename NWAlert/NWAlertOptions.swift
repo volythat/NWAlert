@@ -25,7 +25,8 @@ public class NWAlertOptions {
     public var widthOfAlert : CGFloat = 300
     public var cornerViewContent : CGFloat = 12
     public var cornerButton : CGFloat = 8
-    public var isAllowTapBackground : Bool = true 
+    public var isAllowTapBackground : Bool = true
+    public var buttonsVertical : Bool = false 
     
     public init(fontTitle: UIFont = UIFont.boldSystemFont(ofSize: 18),
                 colorTitle: UIColor = .black,

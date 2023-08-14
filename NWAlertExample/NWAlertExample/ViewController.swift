@@ -18,11 +18,13 @@ class ViewController: UIViewController {
     
     @IBAction func testAlert(_ sender:UIButton){
         let alert = NWAlertController(title: "Are you sure?",
-                                      message: "This action can't be undo!",
+                                      message: "This action can't be undo! This action can't be undo! This action can't be undo!",
                                       buttons: [NWAlertButton("Cancel"),
                                                 NWAlertButton("Discard",highlight: true)])
+        let options = NWAlertOptions()
+        options.buttonsVertical = true 
+        alert.options = options
         
-        alert.options = NWAlertOptions()
         alert.alertButtonAction = { action in
             print("action = \(action.title)")
         }

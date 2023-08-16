@@ -140,6 +140,7 @@ public class NWAlertController: UIViewController {
         self.lbTitle.text = self.titleAlert
         self.lbTitle.font = options.fontTitle
         self.lbTitle.textColor = options.colorTitle
+        self.lbTitle.numberOfLines = 0
         self.lbTitle.sizeToFit()
         self.viewContent.addSubview(self.lbTitle)
         self.lbTitle.snp.makeConstraints { make in

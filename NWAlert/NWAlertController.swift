@@ -63,6 +63,7 @@ public class NWAlertController: UIViewController {
     
     public var options = NWAlertOptions()
     public var alertButtonAction : ((_ action:NWAlertButton)->Void)?
+    public var alertCloseAction : (()->Void)?
     
     //MARK: - Init
     public init(title:String,
@@ -289,9 +290,21 @@ public class NWAlertController: UIViewController {
     
     @objc func tapToBackground(_ sender:UIButton){
         if self.options.isAllowTapBackground {
-            self.dismiss(animated: true)
+            UIView.animate(withDuration: 0.3) {
+                self.viewContent.alpha = 0
+            } completion: { (finish) in
+                self.dismiss(animated: true)
+            }
         }
     }
-
+    @objc func tapToClose(_ sender:UIButton){
+        UIView.animate(withDuration: 0.3) {
+            self.viewContent.alpha = 0
+        } completion: { (finish) in
+            self.dismiss(animated: true){ [weak self] in
+                self?.alertCloseAction?()
+            }
+        }
+    }
     
 }

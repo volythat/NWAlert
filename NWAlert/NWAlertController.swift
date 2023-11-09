@@ -165,7 +165,7 @@ public class NWAlertController: UIViewController {
                 make.width.height.equalTo(50)
                 make.top.leading.equalToSuperview()
             }
-            self.btnClose.addTarget(self, action: #selector(self.tapToBackground(_:)), for: .touchUpInside)
+            self.btnClose.addTarget(self, action: #selector(self.tapToClose(_:)), for: .touchUpInside)
         }
     }
     func addImagePhoto(){

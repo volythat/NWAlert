@@ -20,6 +20,10 @@ public class NWAlertController: UIViewController {
         v.backgroundColor = .black.withAlphaComponent(0.5)
         return v
     }()
+    lazy var btnClose : UIButton = {
+        let v = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        return v
+    }()
     lazy var lbTitle : UILabel = {
         let lb = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 34))
         lb.text = ""
@@ -38,6 +42,12 @@ public class NWAlertController: UIViewController {
         lb.alpha = 1
         return lb
     }()
+    lazy var imvPhoto : UIImageView = {
+        let lb = UIImageView(frame: CGRect(x: 0, y: 0, width: 240, height: 150))
+        lb.alpha = 1
+        lb.contentMode = .scaleAspectFit
+        return lb
+    }()
     lazy var stackButtons : UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.distribution = .fillEqually
@@ -47,19 +57,27 @@ public class NWAlertController: UIViewController {
     
     var titleAlert : String = ""
     var message : String? = nil
+    var image : UIImage? = nil
+    var imageClose : UIImage? = nil
     var buttons : [NWAlertButton] = []
     
     public var options = NWAlertOptions()
     public var alertButtonAction : ((_ action:NWAlertButton)->Void)?
     
     //MARK: - Init
-    public init(title:String,message:String? = nil,buttons:[NWAlertButton]){
+    public init(title:String,
+                message:String? = nil,
+                image:UIImage? = nil,
+                closeImage:UIImage? = nil,
+                buttons:[NWAlertButton]){
         super.init(nibName: nil, bundle: nil)
         self.modalTransitionStyle = .crossDissolve
         self.modalPresentationStyle = .overFullScreen
         self.titleAlert = title
         self.message = message
+        self.image = image
         self.buttons = buttons
+        self.imageClose = closeImage
         
     }
     
@@ -134,6 +152,31 @@ public class NWAlertController: UIViewController {
             make.centerY.equalToSuperview()
         }
         self.cornerRadius(v: viewContent, size: options.cornerViewContent)
+        addCloseButton()
+        addImagePhoto()
+        
+    }
+    func addCloseButton(){
+        if self.imageClose != nil {
+            self.viewContent.addSubview(self.btnClose)
+            self.btnClose.setImage(self.imageClose, for: .normal)
+            self.btnClose.snp.makeConstraints { make in
+                make.width.height.equalTo(50)
+                make.top.leading.equalToSuperview()
+            }
+            self.btnClose.addTarget(self, action: #selector(self.tapToBackground(_:)), for: .touchUpInside)
+        }
+    }
+    func addImagePhoto(){
+        if self.image != nil {
+            self.viewContent.addSubview(self.imvPhoto)
+            self.imvPhoto.snp.makeConstraints { make in
+                make.top.leading.equalToSuperview().offset(options.spacing)
+                make.trailing.equalToSuperview().offset(-options.spacing)
+                make.height.equalTo(options.heightOfPhoto)
+            }
+            self.imvPhoto.image = self.image
+        }
         self.addLabels()
     }
     func addLabels(){
@@ -144,7 +187,12 @@ public class NWAlertController: UIViewController {
         self.lbTitle.sizeToFit()
         self.viewContent.addSubview(self.lbTitle)
         self.lbTitle.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().offset(options.spacing)
+            if self.image != nil {
+                make.top.equalTo(self.imvPhoto.snp.bottom).offset(options.spacing)
+            }else{
+                make.top.equalToSuperview().offset(options.spacing)
+            }
+            make.leading.equalToSuperview().offset(options.spacing)
             make.trailing.equalToSuperview().offset(-options.spacing)
         }
         
@@ -168,6 +216,7 @@ public class NWAlertController: UIViewController {
             self.stackButtons.axis = .vertical
             let heightOfSpacing = (CGFloat(buttons.count - 1) * options.spacing)
             let height = (CGFloat(buttons.count) * options.heightOfButton) + heightOfSpacing
+            
             self.stackButtons.snp.makeConstraints { make in
                 make.top.equalTo(self.lbMessage.snp.bottom).offset(options.spacing)
                 make.leading.equalToSuperview().offset(options.spacing)
@@ -203,9 +252,9 @@ public class NWAlertController: UIViewController {
         let color = item.style == .destructive ? options.colorButtonDestructive : options.colorButtonDefault
         
         if item.isHighlight {
-            btn.backgroundColor = color
             btn.setTitleColor(options.colorButtonTitleActive, for: .normal)
             btn.layer.borderWidth = 0
+            btn.backgroundColor = color
         }else{
             btn.backgroundColor = .clear
             btn.setTitleColor(color, for: .normal)
@@ -243,5 +292,6 @@ public class NWAlertController: UIViewController {
             self.dismiss(animated: true)
         }
     }
+
     
 }

@@ -19,10 +19,14 @@ class ViewController: UIViewController {
     @IBAction func testAlert(_ sender:UIButton){
         let alert = NWAlertController(title: "Are you sure? This action can't be undo! This action can't be undo!",
                                       message: "This action can't be undo! This action can't be undo! This action can't be undo!",
-                                      buttons: [NWAlertButton("Cancel"),
-                                                NWAlertButton("Discard",highlight: true)])
+                                      image:UIImage(named: "img_multi_devices"),
+                                      closeImage:UIImage(named: "icon_close"),
+                                      buttons: [NWAlertButton("Login",style: .destructive,highlight: true)])
         let options = NWAlertOptions()
         options.buttonsVertical = true 
+        options.heightOfPhoto = 193
+        options.cornerButton = 25
+        options.colorButtonDestructive = UIColor(red: 80/255, green: 215/255, blue: 175/255, alpha: 1)
         alert.options = options
         
         alert.alertButtonAction = { action in

@@ -21,6 +21,7 @@ public class NWAlertOptions {
     public var backgroundContentColor : UIColor = .white
     
     public var spacing : CGFloat = 16
+    public var heightOfPhoto : CGFloat = 150
     public var heightOfButton : CGFloat = 50
     public var widthOfAlert : CGFloat = 300
     public var cornerViewContent : CGFloat = 12

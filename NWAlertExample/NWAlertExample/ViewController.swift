@@ -26,14 +26,15 @@ class ViewController: UIViewController {
         options.buttonsVertical = true 
         options.heightOfPhoto = 193
         options.cornerButton = 25
-        options.isShowTextField = false
+        options.isShowTextField = true
         options.placeholderTextField = "Write here"
         options.bgTextField = .lightGray
         options.colorButtonDestructive = UIColor(red: 80/255, green: 215/255, blue: 175/255, alpha: 1)
         alert.options = options
         
-        alert.alertButtonAction = { action in
-            print("action = \(action.title)")
+
+        alert.alertButtonWithTextFieldAction = { action , textField in
+            print("text = \(textField.text)")
         }
         self.present(alert , animated: true)
     }

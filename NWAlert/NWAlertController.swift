@@ -71,6 +71,7 @@ public class NWAlertController: UIViewController {
     
     public var options = NWAlertOptions()
     public var alertButtonAction : ((_ action:NWAlertButton)->Void)?
+    public var alertButtonWithTextFieldAction : ((_ action:NWAlertButton,_ textField:UITextField)->Void)?
     public var alertCloseAction : (()->Void)?
     
     //MARK: - Init
@@ -130,8 +131,12 @@ public class NWAlertController: UIViewController {
             self.viewContent.alpha = 0
         } completion: { (finish) in
             self.dismiss(animated: true){ [weak self] in
-                if let act = action {
-                    self?.alertButtonAction?(act)
+                if let act = action , let sw = self {
+                    if sw.options.isShowTextField == true {
+                        sw.alertButtonWithTextFieldAction?(act,sw.textField)
+                    }else{
+                        sw.alertButtonAction?(act)
+                    }
                 }
             }
         }
@@ -336,3 +341,4 @@ public class NWAlertController: UIViewController {
     }
     
 }
+

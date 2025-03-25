@@ -23,7 +23,7 @@ class ViewController: UIViewController {
                                       closeImage:UIImage(named: "icon_close"),
                                       buttons: [NWAlertButton("Login",style: .destructive,highlight: true)])
         let options = NWAlertOptions()
-        options.buttonsVertical = true 
+        options.buttonsVertical = false
         options.heightOfPhoto = 193
         options.cornerButton = 25
         options.isShowTextField = true

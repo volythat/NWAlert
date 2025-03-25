@@ -255,7 +255,7 @@ public class NWAlertController: UIViewController {
         }else{
             self.stackButtons.axis = .horizontal
             self.stackButtons.snp.makeConstraints { make in
-                make.top.equalTo(self.lbMessage.snp.bottom).offset(options.spacing)
+                make.top.equalTo(self.lbMessage.snp.bottom).offset(spacing)
                 make.leading.equalToSuperview().offset(options.spacing)
                 make.trailing.equalToSuperview().offset(-options.spacing)
                 make.height.equalTo(options.heightOfButton)

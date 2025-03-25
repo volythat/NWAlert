@@ -42,7 +42,7 @@ public class NWAlertController: UIViewController {
         lb.alpha = 1
         return lb
     }()
-    lazy var textField : CTTextField = {
+    public lazy var textField : CTTextField = {
         let lb = CTTextField(frame: CGRect(x: 0, y: 0, width: 100, height: 34))
         lb.text = ""
         lb.font = UIFont.systemFont(ofSize: 13)
@@ -225,12 +225,6 @@ public class NWAlertController: UIViewController {
     }
     func addTextField(){
         if options.isShowTextField {
-            self.textField.font = options.fontTextField
-            self.textField.textColor = options.colorTextField
-            self.textField.placeholder = options.placeholderTextField
-            self.textField.backgroundColor = options.bgTextField
-            self.textField.layer.cornerRadius = options.cornerTextField
-            self.textField.layer.masksToBounds = true
             
             self.viewContent.addSubview(self.textField)
             self.textField.snp.makeConstraints { make in

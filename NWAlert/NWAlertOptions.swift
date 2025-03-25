@@ -30,11 +30,7 @@ public class NWAlertOptions {
     public var buttonsVertical : Bool = false
     
     public var isShowTextField : Bool = false
-    public var bgTextField : UIColor = .white
-    public var fontTextField : UIFont = .systemFont(ofSize: 15)
-    public var colorTextField : UIColor = .black
-    public var placeholderTextField : String = ""
-    public var cornerTextField : CGFloat = 8
+    
     
     public init(fontTitle: UIFont = UIFont.boldSystemFont(ofSize: 18),
                 colorTitle: UIColor = .black,

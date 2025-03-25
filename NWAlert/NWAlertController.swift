@@ -42,6 +42,14 @@ public class NWAlertController: UIViewController {
         lb.alpha = 1
         return lb
     }()
+    lazy var textField : CTTextField = {
+        let lb = CTTextField(frame: CGRect(x: 0, y: 0, width: 100, height: 34))
+        lb.text = ""
+        lb.font = UIFont.systemFont(ofSize: 13)
+        lb.textColor = .black
+        lb.alpha = 1
+        return lb
+    }()
     lazy var imvPhoto : UIImageView = {
         let lb = UIImageView(frame: CGRect(x: 0, y: 0, width: 240, height: 150))
         lb.alpha = 1
@@ -208,10 +216,30 @@ public class NWAlertController: UIViewController {
             make.leading.equalToSuperview().offset(options.spacing)
             make.trailing.equalToSuperview().offset(-options.spacing)
         }
-        
-        addStackView()
+        addTextField()
     }
-    func addStackView(){
+    func addTextField(){
+        if options.isShowTextField {
+            self.textField.font = options.fontTextField
+            self.textField.textColor = options.colorTextField
+            self.textField.placeholder = options.placeholderTextField
+            self.textField.backgroundColor = options.bgTextField
+            self.textField.layer.cornerRadius = options.cornerTextField
+            self.textField.layer.masksToBounds = true
+            
+            self.viewContent.addSubview(self.textField)
+            self.textField.snp.makeConstraints { make in
+                make.top.equalTo(self.lbMessage.snp.bottom).offset(8)
+                make.leading.equalToSuperview().offset(options.spacing)
+                make.trailing.equalToSuperview().offset(-options.spacing)
+                make.height.equalTo(50)
+            }
+            addStackView(spacing: 58 + options.spacing)
+        }else{
+            addStackView(spacing: options.spacing)
+        }
+    }
+    func addStackView(spacing:CGFloat){
         self.viewContent.addSubview(self.stackButtons)
         if self.buttons.count > 2 || self.options.buttonsVertical {
             self.stackButtons.axis = .vertical
@@ -219,7 +247,7 @@ public class NWAlertController: UIViewController {
             let height = (CGFloat(buttons.count) * options.heightOfButton) + heightOfSpacing
             
             self.stackButtons.snp.makeConstraints { make in
-                make.top.equalTo(self.lbMessage.snp.bottom).offset(options.spacing)
+                make.top.equalTo(self.lbMessage.snp.bottom).offset(spacing)
                 make.leading.equalToSuperview().offset(options.spacing)
                 make.trailing.equalToSuperview().offset(-options.spacing)
                 make.height.equalTo(height)

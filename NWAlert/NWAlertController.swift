@@ -231,9 +231,9 @@ public class NWAlertController: UIViewController {
                 make.top.equalTo(self.lbMessage.snp.bottom).offset(8)
                 make.leading.equalToSuperview().offset(options.spacing)
                 make.trailing.equalToSuperview().offset(-options.spacing)
-                make.height.equalTo(50)
+                make.height.equalTo(options.heightOfTextField)
             }
-            addStackView(spacing: 58 + options.spacing)
+            addStackView(spacing: options.heightOfTextField + 8 + options.spacing)
         }else{
             addStackView(spacing: options.spacing)
         }

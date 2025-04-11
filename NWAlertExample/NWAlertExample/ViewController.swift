@@ -27,6 +27,7 @@ class ViewController: UIViewController {
         options.heightOfPhoto = 193
         options.cornerButton = 25
         options.isShowTextField = true
+        options.heightOfTextField = 80
         alert.textField.placeholder = "Write here"
         alert.textField.backgroundColor = .lightGray
         

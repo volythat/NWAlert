@@ -23,6 +23,7 @@ public class NWAlertOptions {
     public var spacing : CGFloat = 16
     public var heightOfPhoto : CGFloat = 150
     public var heightOfButton : CGFloat = 50
+    public var heightOfTextField : CGFloat = 50
     public var widthOfAlert : CGFloat = 300
     public var cornerViewContent : CGFloat = 12
     public var cornerButton : CGFloat = 8

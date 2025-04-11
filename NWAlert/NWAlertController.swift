@@ -123,7 +123,9 @@ public class NWAlertController: UIViewController {
             self.viewContent.alpha = 1
             self.viewContent.transform = CGAffineTransform.identity
         } completion: { (finish ) in
-            
+            if self.options.becomeActiveTextField {
+                self.textField.becomeFirstResponder()
+            }
         }
     }
     func dismissWithAnimation(action:NWAlertButton?){

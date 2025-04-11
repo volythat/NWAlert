@@ -31,6 +31,7 @@ public class NWAlertOptions {
     public var buttonsVertical : Bool = false
     
     public var isShowTextField : Bool = false
+    public var becomeActiveTextField : Bool = false
     
     
     public init(fontTitle: UIFont = UIFont.boldSystemFont(ofSize: 18),

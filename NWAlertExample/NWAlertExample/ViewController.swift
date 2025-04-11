@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         options.cornerButton = 25
         options.isShowTextField = true
         options.heightOfTextField = 80
+        options.becomeActiveTextField = true 
         alert.textField.placeholder = "Write here"
         alert.textField.backgroundColor = .lightGray
         

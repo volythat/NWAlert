@@ -42,8 +42,8 @@ public class NWAlertController: UIViewController {
         lb.alpha = 1
         return lb
     }()
-    public lazy var textField : CTTextField = {
-        let lb = CTTextField(frame: CGRect(x: 0, y: 0, width: 100, height: 34))
+    public lazy var textField : UITextView = {
+        let lb = UITextView(frame: CGRect(x: 0, y: 0, width: 100, height: 34))
         lb.text = ""
         lb.font = UIFont.systemFont(ofSize: 13)
         lb.textColor = .black
@@ -71,7 +71,7 @@ public class NWAlertController: UIViewController {
     
     public var options = NWAlertOptions()
     public var alertButtonAction : ((_ action:NWAlertButton)->Void)?
-    public var alertButtonWithTextFieldAction : ((_ action:NWAlertButton,_ textField:UITextField)->Void)?
+    public var alertButtonWithTextFieldAction : ((_ action:NWAlertButton,_ textField:UITextView)->Void)?
     public var alertCloseAction : (()->Void)?
     
     //MARK: - Init

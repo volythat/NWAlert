@@ -235,6 +235,9 @@ public class NWAlertController: UIViewController {
                 make.trailing.equalToSuperview().offset(-options.spacing)
                 make.height.equalTo(options.heightOfTextField)
             }
+            if options.isSelectedText {
+                self.textField.delegate = self
+            }
             addStackView(spacing: options.heightOfTextField + 8 + options.spacing)
         }else{
             addStackView(spacing: options.spacing)
@@ -338,3 +341,12 @@ public class NWAlertController: UIViewController {
     
 }
 
+extension NWAlertController : UITextViewDelegate {
+    
+    public func textViewDidBeginEditing(_ textView: UITextView) {
+        // Chọn toàn bộ nội dung khi người dùng bắt đầu edit
+        if !textView.text.isEmpty , options.isSelectedText {
+            textView.selectedRange = NSRange(location: 0, length: textView.text.count)
+        }
+    }
+}

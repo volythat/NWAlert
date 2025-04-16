@@ -30,10 +30,10 @@ class ViewController: UIViewController {
         options.heightOfTextField = 80
         options.becomeActiveTextField = true
         alert.textField.backgroundColor = .lightGray
-        
+        options.isSelectedText = true
         options.colorButtonDestructive = UIColor(red: 80/255, green: 215/255, blue: 175/255, alpha: 1)
         alert.options = options
-        
+        alert.textField.text = "Hello"
 
         alert.alertButtonWithTextFieldAction = { action , textField in
             print("text = \(textField.text)")
